@@ -2,25 +2,32 @@
 sidebar_position: 2
 title: How to install
 ---
+import BrowserOnly from '@docusaurus/BrowserOnly';
 
-export const current_site = new URLSearchParams(window.location.search).get('site') || 'exapmle.com';
+export const CurrentSite = () => {
+  return (
+    <BrowserOnly>
+      {() =>  new URLSearchParams(window.location.search).get('site') || 'exapmle.com'}
+    </BrowserOnly>
+  );
+};
 
-<!-- code with script -->
-export const GetScript = () => (
-  <pre>
-    <code>
-      {`<script src="https://nepcha.com/script.js" data-domain="${current_site}"></script>`}
-    </code>
-  </pre>
-);
+export const GetScript = () => {
+  return (
+    <BrowserOnly>
+      {() => {
+        const current_site = new URLSearchParams(window.location.search).get('site') || 'exapmle.com';
+        return <code>{`<script src="https://nepcha.com/install.js" data-domain="${current_site}"></script>`}</code>;
+      }}
+    </BrowserOnly>
+  );
+};
 
 
 
 
-<h2> Install Nepcha on your site ({current_site})</h2>
+<h2> Install Nepcha on your site (<CurrentSite/>)</h2>
 
 1. Add the following script to your site:
 
-export const current_script = "text"
-
-<GetScript></GetScript>
+<GetScript/>
