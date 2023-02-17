@@ -7,7 +7,7 @@ import BrowserOnly from '@docusaurus/BrowserOnly';
 export const CurrentSite = () => {
   return (
     <BrowserOnly>
-      {() =>  new URLSearchParams(window.location.search).get('site') || 'exapmle.com'}
+      {() =>  new URLSearchParams(window.location.search).get('site') || 'example.com'}
     </BrowserOnly>
   );
 };
@@ -16,7 +16,7 @@ export const GetScript = () => {
   return (
     <BrowserOnly>
       {() => {
-        const current_site = new URLSearchParams(window.location.search).get('site') || 'exapmle.com';
+        const current_site = new URLSearchParams(window.location.search).get('site') || 'example.com';
         return <code>{`<script src="https://nepcha.com/install.js" data-domain="${current_site}"></script>`}</code>;
       }}
     </BrowserOnly>
